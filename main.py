@@ -1,11 +1,11 @@
 from flask import Flask, render_template
-from flask_bootstrap import Bootstrap
+
 from dotenv import load_dotenv
 from datetime import date
 import os
 
 app = Flask(__name__)
-Bootstrap(app)
+
 load_dotenv()
 current_year = date.today().year
 
