@@ -9,6 +9,12 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-family: 'Alegreya', serif;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
 /* Navbar */
 
 .brand {
@@ -30,6 +36,42 @@ a {
     color: #ff7e67;
 }
 
+/* Jumbotron */
+
+.jumbotron {
+    height: 360px;
+    position: relative;
+    background: no-repeat center center;
+    background-color: #ccf2f4;
+    background-size: cover;
+    background-attachment: scroll;
+}
+
+.jumbo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #212529;
+    opacity: 0.5;
+}
+
+.jumbo-title {
+    position: relative;
+    margin-top: 40px;
+    color: #fafafa;
+}
+
+.jumbo-header {
+    padding-top: 20px;
+    font-size: 4rem;
+}
+
+.jumbo-subheader {
+    font-size: 1.1rem;
+}
+
 /* Footer */
 
 .footer-icon {
@@ -41,5 +83,5 @@ a {
 }
 
 .copyright {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
