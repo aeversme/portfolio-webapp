@@ -1,12 +1,45 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #fafafa;
+    color: #212529;
+}
 
+a {
+    color: #212529;
+    text-decoration: none;
+}
+
+/* Navbar */
+
+.brand {
+    font-family: 'Lobster', cursive;
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: #ff7e67;
+}
+
+.button {
+    color: #ff7e67;
+}
+
+.nav-link {
+    font-size: 0.9rem;
+}
+
+.nav-link:hover {
+    color: #ff7e67;
+}
 
 /* Footer */
 
 .footer-icon {
     padding: 20px 15px;
-    color: #212529;
 }
 
 .footer-icon:hover {
-    color: #ff4c68;
+    color: #ff7e67;
+}
+
+.copyright {
+    font-size: 0.75rem;
 }
