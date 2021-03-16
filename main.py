@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, abort
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_ckeditor import CKEditor
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
@@ -15,12 +16,13 @@ import os
 
 app = Flask(__name__)
 current_year = date.today().year
+Bootstrap(app)
 ckeditor = CKEditor(app)
 load_dotenv()
 
 # App & DB Config
 app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///blog.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 

@@ -15,10 +15,33 @@ Home
     </div>
 </div>
 <div class="container">
-    <div class="feature-title text-center">
-        <h2 class="medium-heading">All Blog Posts</h2>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        
+            {% for blog_post in all_posts %}
+                <div class="post-preview">
+                    <a href="{{ url_for('get_blog_post', post_id=blog_post.id) }}">
+                    <h2 class="medium-heading">{{ blog_post.title }}</h2>
+                    <h3 class="small-heading">{{ blog_post.subtitle }}</h3>
+                    </a>
+                    <p class="post-meta">Posted by
+                    <a href="#" style="text-decoration:none;">{{ blog_post.author.name }}</a>
+                    on {{ blog_post.date }}
+                    {% if current_user.id == 1 %}
+                    <a href="{{ url_for('delete', post_id=blog_post.id) }}">✘</a>
+                    {% endif %}
+                    </p>
+                </div>
+            {% endfor %}
+        
+            <!-- Pager -->
+            <div class="clearfix">
+                {% if current_user.id == 1 %}
+                    <a class="btn btn-primary float-right" href="{{ url_for('make_post') }}">Create New Post</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
-
 </div>
 
 {% endblock %}

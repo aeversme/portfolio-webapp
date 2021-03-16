@@ -43,6 +43,11 @@
                         <a class="nav-link" href="{{ url_for('get_all_posts') }}">Blog</a>
                         <a class="nav-link" href="https://resume.alexeversmeyer.com">Résumé</a>
                         <a class="nav-link" href="{{ url_for('contact_me') }}">Contact</a>
+                        {% if not logged_in %}
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                        {% else %}
+                        <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

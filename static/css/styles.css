@@ -9,6 +9,10 @@ a {
     text-decoration: none;
 }
 
+a.muted {
+    color: #6c757d;
+}
+
 a:hover {
     color: #ff7e67;
     text-decoration: none;
@@ -111,6 +115,19 @@ h1, h2, h3 {
 .feature-icon {
     padding-bottom: 20px;
     color: #ff7e67;
+}
+
+/* Blog */
+
+.post-meta {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 0;
+    color: #868e96;
+}
+
+.register-link {
+    margin-top: 10px;
 }
 
 /* CTA */
