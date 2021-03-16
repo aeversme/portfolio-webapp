@@ -37,12 +37,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link" href="#">Home</a>
-                        <a class="nav-link" href="#">About</a>
-                        <a class="nav-link" href="#">Projects</a>
-                        <a class="nav-link" href="#">Blog</a>
-                        <a class="nav-link" href="https://alexeversmeyer.com/resume">Résumé</a>
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{ url_for('get_index') }}">Home</a>
+                        <a class="nav-link" href="{{ url_for('get_about_page') }}">About</a>
+                        <a class="nav-link" href="{{ url_for('get_projects') }}">Projects</a>
+                        <a class="nav-link" href="{{ url_for('get_all_posts') }}">Blog</a>
+                        <a class="nav-link" href="https://resume.alexeversmeyer.com">Résumé</a>
+                        <a class="nav-link" href="{{ url_for('contact_me') }}">Contact</a>
                     </div>
                 </div>
             </div>
