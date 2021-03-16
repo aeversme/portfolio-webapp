@@ -91,32 +91,196 @@ db.create_all()
 
 @app.route('/')
 def get_index():
-    return render_template('index.html', year=current_year)
+    return render_template('index.html',
+                           year=current_year,
+                           logged_in=current_user.is_authenticated)
 
 
 @app.route('/about')
 def get_about_page():
-    return render_template('about.html', year=current_year)
+    return render_template('about.html',
+                           year=current_year,
+                           logged_in=current_user.is_authenticated)
 
 
 @app.route('/projects')
 def get_projects():
-    return render_template('/projects.html', year=current_year)
+    return render_template('/projects.html',
+                           year=current_year,
+                           logged_in=current_user.is_authenticated)
 
 
 @app.route('/blog')
 def get_all_posts():
-    return render_template('blog.html', year=current_year)
+    blog_posts = db.session.query(BlogPost).all()
+    return render_template('blog.html',
+                           year=current_year,
+                           all_posts=blog_posts,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/register')
+def register_new_user():
+    register_form = RegisterForm()
+    if register_form.validate_on_submit():
+        if User.query.filter_by(email=register_form.email.data).first():
+            flash('That email is already registered, log in instead!')
+            return redirect(url_for('login'))
+        else:
+            hash_and_salted_password = generate_password_hash(
+                password=register_form.password.data,
+                method='pbkdf2:sha256',
+                salt_length=8
+            )
+            new_user = User()
+            new_user.name = register_form.name.data
+            new_user.email = register_form.email.data
+            new_user.password = hash_and_salted_password
+            db.session.add(new_user)
+            db.session.commit()
+
+            login_user(new_user)
+            return redirect(url_for('get_all_posts'))
+
+    return render_template("register.html",
+                           form=register_form,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    login_form = LoginForm()
+    if login_form.validate_on_submit():
+        user = User.query.filter_by(email=login_form.email.data).first()
+        if not user:
+            flash('That email does not exist, please try again.')
+            return redirect(url_for('login'))
+        elif not check_password_hash(user.password, login_form.password.data):
+            flash('Incorrect password, please try again.')
+            return redirect(url_for('login'))
+        else:
+            login_user(user)
+            return redirect(url_for('get_all_posts'))
+    return render_template("login.html",
+                           form=login_form,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('get_all_posts'))
+
+
+@app.route('/post/<int:post_id>', methods=['GET', 'POST'])
+def get_blog_post(post_id):
+    requested_post = BlogPost.query.get(post_id)
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        if not current_user.is_authenticated:
+            flash('You need to login or register to comment.')
+            return redirect(url_for('login'))
+        else:
+            new_comment = Comment(
+                post_id=post_id,
+                author_id=current_user.id,
+                text=comment_form.comment.data
+            )
+            db.session.add(new_comment)
+            db.session.commit()
+            return redirect(url_for('get_blog_post', post_id=post_id))
+    return render_template('post.html',
+                           year=current_year,
+                           blog_post=requested_post,
+                           form=comment_form,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/make-post', methods=['GET', 'POST'])
+@admin_only
+def make_post():
+    post_form = CreatePostForm()
+    if post_form.validate_on_submit():
+        new_blog_post = BlogPost(
+            title=post_form.title.data,
+            subtitle=post_form.subtitle.data,
+            date=date.today().strftime('%B %d, %Y'),
+            body=post_form.body.data,
+            author=current_user,
+            img_url=post_form.img_url.data
+        )
+        db.session.add(new_blog_post)
+        db.session.commit()
+        return redirect(url_for('get_all_posts'))
+    return render_template('make-post.html',
+                           year=current_year,
+                           form=post_form,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
+@admin_only
+def edit_post(post_id):
+    selected_post = BlogPost.query.get(post_id)
+    edit_form = CreatePostForm(
+        title=selected_post.title,
+        subtitle=selected_post.subtitle,
+        img_url=selected_post.img_url,
+        author=selected_post.author,
+        body=selected_post.body
+    )
+    if edit_form.validate_on_submit():
+        selected_post.title = edit_form.title.data
+        selected_post.subtitle = edit_form.subtitle.data
+        selected_post.body = edit_form.body.data
+        selected_post.author = current_user
+        selected_post.img_url = edit_form.img_url.data
+        db.session.commit()
+        return redirect(url_for('get_blog_post', post_id=selected_post.id))
+    return render_template('make-post.html',
+                           form=edit_form,
+                           is_edit=True,
+                           logged_in=current_user.is_authenticated)
+
+
+@app.route('/delete/<int:post_id>')
+@admin_only
+def delete(post_id):
+    selected_post = BlogPost.query.get(post_id)
+    db.session.delete(selected_post)
+    db.session.commit()
+    return redirect(url_for('get_all_posts'))
 
 
 @app.route('/resume')
 def get_resume():
-    return render_template('resume.html', year=current_year)
+    return render_template('resume.html',
+                           year=current_year,
+                           logged_in=current_user.is_authenticated)
 
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact_me():
-    return render_template('contact.html', year=current_year)
+    if request.method == 'POST':
+        data = request.form
+        # TODO Add a try/except statement here
+        with smtplib.SMTP('smtp.mail.yahoo.com') as connection:
+            connection.starttls()
+            connection.login(user=os.getenv('SEND_EMAIL_FROM'), password=os.getenv('PASSWORD'))
+            connection.sendmail(
+                from_addr=os.getenv('SEND_EMAIL_FROM'),
+                to_addrs=os.getenv('SEND_EMAIL_TO'),
+                msg=f'Subject: Blog Form Submission\n\n'
+                    f'Name: {data["name"]}\n'
+                    f'Email: {data["email"]}\n'
+                    f'Phone: {data["phone"]}\n'
+                    f'Message: {data["message"]}\n'
+            )
+        # TODO Should be within the else statement of the try/except
+        flash('Your message has been successfully sent. Thanks!')
+    return render_template('contact.html',
+                           year=current_year,
+                           logged_in=current_user.is_authenticated)
 
 
 if __name__ == '__main__':
