@@ -9,10 +9,40 @@ a {
     text-decoration: none;
 }
 
-h1 {
+a:hover {
+    color: #ff7e67;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
     font-family: 'Alegreya', serif;
-    font-size: 3rem;
     font-weight: 600;
+}
+
+.dark {
+    background-color: #033242;
+    color: #fafafa;
+}
+
+/* Headings */
+
+.big-heading {
+    font-size: 5rem;
+    line-height: 1.5;
+}
+
+.medium-heading {
+    font-size: 2.5rem;
+    line-height: 1.5;
+}
+
+.small-heading {
+    font-size: 1.7rem;
+    line-height: 1.5;
+}
+
+.subheading {
+    font-size: 1.1rem;
 }
 
 /* Navbar */
@@ -39,7 +69,7 @@ h1 {
 /* Jumbotron */
 
 .jumbotron {
-    height: 360px;
+    height: 400px;
     position: relative;
     background: no-repeat center center;
     background-color: #ccf2f4;
@@ -59,20 +89,41 @@ h1 {
 
 .jumbo-title {
     position: relative;
-    margin-top: 40px;
-    color: #fafafa;
-}
-
-.jumbo-header {
+    margin-top: 20px;
     padding-top: 20px;
-    font-size: 4rem;
+    color: #fafafa;
 }
 
 .jumbo-subheader {
     font-size: 1.1rem;
 }
 
+/* Features */
+
+.feature-title {
+    padding: 40px 0;
+}
+
+.feature-box {
+    padding: 5%;
+}
+
+.feature-icon {
+    padding-bottom: 20px;
+    color: #ff7e67;
+}
+
+/* CTA */
+
+.cta {
+    padding: 40px 0;
+}
+
 /* Footer */
+
+footer {
+    padding: 40px 0 10px;
+}
 
 .footer-icon {
     padding: 20px 15px;
