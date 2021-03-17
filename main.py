@@ -121,7 +121,7 @@ def get_all_posts():
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register_new_user():
     register_form = RegisterForm()
     if register_form.validate_on_submit():
