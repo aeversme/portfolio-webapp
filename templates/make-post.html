@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-Home
+New Post
 {% endblock %}
 
 {% block content %}
@@ -15,10 +16,14 @@ Home
     </div>
 </div>
 <div class="container">
-    <div class="feature-title text-center">
-        <h2 class="medium-heading">Write a Blog Post</h2>
-    </div>
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+          {{ ckeditor.load() }}
+          {{ ckeditor.config(name='body') }}
+          {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
 
+      </div>
+    </div>
 </div>
 
 {% endblock %}

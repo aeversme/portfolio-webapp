@@ -1,24 +1,52 @@
 {% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-Home
+Blog Post
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid" style="background-image: url({{ url_for('static', filename='img/home_bg.jpg') }})">
+<div class="jumbotron jumbotron-fluid" style="background-image: url({{ blog_post.img_url }})">
     <div class="jumbo-overlay"></div>
     <div class="container">
         <div class="jumbo-title text-center">
-            <h1 class="big-heading">- Post Title -</h1>
-            <p class="subheading">- Post Subtitle -</p>
+            <h1 class="big-heading">{{ blog_post.title }}</h1>
+            <p class="subheading">{{ blog_post.subtitle }}</p>
         </div>
     </div>
 </div>
 <div class="container">
-    <div class="feature-title text-center">
-        <h2 class="medium-heading">Individual Blog Post</h2>
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {{ blog_post.body|safe }}
+            <span class="post-meta">Posted by {{ blog_post.author.name }} on {{ blog_post.date }}</span>
+            <hr>
+            <div class="clearfix">
+                {% if current_user.id == 1 %}
+                    <a class="btn btn-primary float-right" href="{{url_for('edit_post', post_id=blog_post.id)}}">Edit Post</a>
+                {% endif %}
+                <br>
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='comment') }}
+                {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-10 mx-auto comment">
+            <ul class="comment-list">
+                {% for comment in blog_post.comments %}
+                    <li>
+                        <div class="commenter-image">
+                            <img src="{{ comment.comment_author.email | gravatar }}"/>
+                        </div>
+                        <div class="comment-text">
+                            <p>{{ comment.text|safe }}</p>
+                            <span class="comment-meta">{{ comment.comment_author.name }}</span>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
-
 </div>
 
 {% endblock %}

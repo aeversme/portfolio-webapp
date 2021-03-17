@@ -23,6 +23,15 @@ h1, h2, h3 {
     font-weight: 600;
 }
 
+hr {
+    border-color: #eee;
+    border-style: none;
+    border-top-style: dotted;
+    border-width: 8px;
+    width: 15%;
+    margin: 20px auto;
+}
+
 .dark {
     background-color: #033242;
     color: #fafafa;
@@ -120,14 +129,44 @@ h1, h2, h3 {
 /* Blog */
 
 .post-meta {
-    font-size: 18px;
+    font-size: 16px;
     font-style: italic;
-    margin-top: 0;
-    color: #868e96;
+    margin-top: 10px;
+    color: #6c757d;
 }
 
 .register-link {
     margin-top: 10px;
+}
+
+.comment {
+    padding-top: 20px;
+}
+
+.comment-list {
+    padding: 0;
+    list-style: none;
+}
+
+.commenter-image {
+    width: 30px;
+    margin-right: 5px;
+    height: 100%;
+    float: left;
+}
+
+.commenter-image img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.comment-text p {
+    margin: 0;
+}
+
+.comment-meta {
+    font-size: 11px;
+    color: #868e96;
 }
 
 /* CTA */

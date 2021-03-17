@@ -24,9 +24,7 @@ Home
                     <h2 class="medium-heading">{{ blog_post.title }}</h2>
                     <h3 class="small-heading">{{ blog_post.subtitle }}</h3>
                     </a>
-                    <p class="post-meta">Posted by
-                    <a href="#" style="text-decoration:none;">{{ blog_post.author.name }}</a>
-                    on {{ blog_post.date }}
+                    <p class="post-meta">Posted by {{ blog_post.author.name }} on {{ blog_post.date }}
                     {% if current_user.id == 1 %}
                     <a href="{{ url_for('delete', post_id=blog_post.id) }}">✘</a>
                     {% endif %}
