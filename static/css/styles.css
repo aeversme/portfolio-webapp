@@ -62,6 +62,18 @@ hr {
     font-size: 1.1rem;
 }
 
+/* Buttons */
+
+.custom {
+    color: #fff;
+    background-color: #ff7e67;
+}
+
+.custom:hover {
+    color: #fff;
+    background-color: #e6654e;
+}
+
 /* Navbar */
 
 .brand {
