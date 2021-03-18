@@ -6,7 +6,7 @@ from flask_login import UserMixin, login_user, LoginManager, current_user, logou
 from sqlalchemy import ForeignKey
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship
-from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
+from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm, ContactForm
 from flask_gravatar import Gravatar
 from functools import wraps
 import smtplib
@@ -263,8 +263,8 @@ def get_resume():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact_me():
-    if request.method == 'POST':
-        data = request.form
+    contact_form = ContactForm()
+    if contact_form.validate_on_submit():
         # TODO Add a try/except statement here
         with smtplib.SMTP('smtp.mail.yahoo.com') as connection:
             connection.starttls()
@@ -273,15 +273,16 @@ def contact_me():
                 from_addr=os.getenv('SEND_EMAIL_FROM'),
                 to_addrs=os.getenv('SEND_EMAIL_TO'),
                 msg=f'Subject: Blog Form Submission\n\n'
-                    f'Name: {data["name"]}\n'
-                    f'Email: {data["email"]}\n'
-                    f'Phone: {data["phone"]}\n'
-                    f'Message: {data["message"]}\n'
+                    f'Name: {contact_form.name.data}\n'
+                    f'Email: {contact_form.email.data}\n'
+                    f'Message: {contact_form.message.data}\n'
             )
         # TODO Should be within the else statement of the try/except
         flash('Your message has been successfully sent. Thanks!')
+        return redirect(url_for('contact_me'))
     return render_template('contact.html',
                            year=current_year,
+                           form=contact_form,
                            logged_in=current_user.is_authenticated)
 
 

@@ -37,6 +37,10 @@ hr {
     color: #fafafa;
 }
 
+#contact-message {
+    height: 210px;
+}
+
 /* Headings */
 
 .big-heading {
