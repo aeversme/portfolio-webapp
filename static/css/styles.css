@@ -67,11 +67,17 @@ hr {
 .custom {
     color: #fff;
     background-color: #ff7e67;
+    font-weight: 600;
 }
 
-.custom:hover {
+.custom:hover, .custom:focus {
     color: #fff;
     background-color: #e6654e;
+}
+
+.custom:active {
+    box-shadow: none;
+    -webkit-box-shadow: none
 }
 
 /* Navbar */

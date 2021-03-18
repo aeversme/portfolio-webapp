@@ -30,7 +30,11 @@ Login
                     {% endfor %}
                 {% endif %}
             {% endwith %}
-            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            <form action="" method="post" class="form" role="form">
+                {{ wtf.form_field(form.email, novalidate=True) }}
+                {{ wtf.form_field(form.password, novalidate=True) }}
+                <button type="submit" class="btn custom"><i class="fas fa-check"></i> Log Me In!</button>
+            </form>
         </div>
     </div>
     <div class="row">

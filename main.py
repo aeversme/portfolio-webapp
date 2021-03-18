@@ -152,7 +152,7 @@ def register_new_user():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     login_form = LoginForm()
-    if login_form.validate_on_submit():
+    if request.method == 'POST':
         user = User.query.filter_by(email=login_form.email.data).first()
         if not user:
             flash('That email does not exist, please try again.')
