@@ -30,7 +30,14 @@ Register
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.name) }}
+            {{ wtf.form_field(form.email) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.password2) }}
+            <button type="submit" class="btn custom"><i class="fas fa-user-plus"></i> Sign Up</button>
+        </form>
         </div>
     </div>
 

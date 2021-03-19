@@ -124,7 +124,7 @@ def get_all_posts():
 @app.route('/register', methods=['GET', 'POST'])
 def register_new_user():
     register_form = RegisterForm()
-    if register_form.validate_on_submit():
+    if request.method == 'POST' and register_form.validate():
         if User.query.filter_by(email=register_form.email.data).first():
             flash('That email is already registered, log in instead!')
             return redirect(url_for('login'))
@@ -173,14 +173,14 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('get_all_posts'))
+    return redirect(request.referrer)
 
 
 @app.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def get_blog_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     comment_form = CommentForm()
-    if comment_form.validate_on_submit():
+    if request.method == 'POST' and comment_form.validate():
         if not current_user.is_authenticated:
             flash('You need to login or register to comment.')
             return redirect(url_for('login'))

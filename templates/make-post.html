@@ -17,12 +17,18 @@ New Post
 </div>
 <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-          {{ ckeditor.load() }}
-          {{ ckeditor.config(name='body') }}
-          {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
-
-      </div>
+        <div class="col-lg-8 col-md-10 mx-auto">
+            {{ ckeditor.load() }}
+            {{ ckeditor.config(name='body') }}
+            <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.title) }}
+            {{ wtf.form_field(form.subtitle) }}
+            {{ wtf.form_field(form.img_url) }}
+            {{ wtf.form_field(form.body) }}
+            <button type="submit" class="btn custom"><i class="fas fa-ghost"></i> Submit Post</button>
+            </form>
+        </div>
     </div>
 </div>
 

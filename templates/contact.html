@@ -31,7 +31,13 @@ Home
             {% endif %}
         {% endwith %}
         <p>Get in touch! Fill out the form below to send me a message and I will get back to you as soon as possible.</p>
-        {{ wtf.quick_form(form, novalidate=True, button_map={'submit': 'primary'}) }}
+        <form action="" method="post" class="form" role="form">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.name) }}
+            {{ wtf.form_field(form.email) }}
+            {{ wtf.form_field(form.message) }}
+            <button type="submit" class="btn custom"><i class="fas fa-paper-plane"></i> Send Email</button>
+        </form>
         </div>
     </div>
 </div>
