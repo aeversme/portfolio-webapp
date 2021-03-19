@@ -19,31 +19,63 @@ Projects
         <div class="card">
             <img src="{{ url_for('static', filename='img/proj/proj-portfolio.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h3 class="card-title">Card title</h3>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h3 class="card-title">Portfolio Webapp</h3>
+                <p class="card-text text-muted status">
+                    Status: in development
+                </p>
+                <p class="card-text">This website! Responsive Bootstrap CSS, Flask, authentication, SQLALchemy,
+                    and more. Soon to be deployed on AWS with Elastic Beanstalk.
+                </p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">
+                    <button type="button" class="btn custom btn-proj">
+                        More Info
+                    </button>
+                    <a class="btn custom btn-proj" href="https://github.com/aeversme/portfolio-webapp" target="_blank">
+                        <i class="fas fa-code-branch"></i> GitHub</a>
+                </small>
             </div>
         </div>
         <div class="card">
             <img src="{{ url_for('static', filename='img/proj/proj-resume.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h3 class="card-title">Card title</h3>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <h3 class="card-title">Cloud Resume</h3>
+                <p class="card-text text-muted status">
+                    Status: complete, deployed
+                </p>
+                <p class="card-text">Created for Forrest Brazeal's
+                    <a href="https://cloudresumechallenge.dev/" target="_blank">Cloud Resume Challenge</a>. Hosted on
+                    AWS using Serverless Application Model, S3, Cloudfront, Lambda, DynamoDB, and more. GitHub Actions
+                    for CI/CD.
+                </p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">
+                    <button type="button" class="btn custom btn-proj">More Info</button>
+                    <a class="btn custom btn-proj" href="https://github.com/aeversme/resumestatic" target="_blank">
+                        <i class="fas fa-code-branch"></i> GitHub</a>
+                </small>
             </div>
         </div>
         <div class="card">
             <img src="{{ url_for('static', filename='img/proj/proj-habit.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h3 class="card-title">Card title</h3>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <h3 class="card-title">Habit Tracker GUI</h3>
+                <p class="card-text text-muted status">
+                    Status: complete, executable planned
+                </p>
+                <p class="card-text">A desktop app to track habits (such as learning/coding hours). Utilizes
+                    <a href="https://pixe.la/" target="_blank">Pixe.la</a> APIs to create a pixel graph. Created as a side
+                    project with guizero.
+                </p>
             </div>
             <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">
+                    <button type="button" class="btn custom btn-proj">More Info</button>
+                    <a class="btn custom btn-proj" href="https://github.com/aeversme/habit-tracker-gui" target="_blank">
+                        <i class="fas fa-code-branch"></i> GitHub</a>
+                </small>
             </div>
         </div>
     </div>

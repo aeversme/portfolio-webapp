@@ -68,11 +68,15 @@ hr {
     color: #fff;
     background-color: #ff7e67;
     font-weight: 600;
+    box-shadow: none;
+    -webkit-box-shadow: none
 }
 
 .custom:hover, .custom:focus {
     color: #fff;
     background-color: #e6654e;
+    box-shadow: none;
+    -webkit-box-shadow: none
 }
 
 .custom:active {
@@ -189,6 +193,16 @@ hr {
 .comment-meta {
     font-size: 11px;
     color: #868e96;
+}
+
+/* Projects */
+
+.status {
+    font-size: 0.9rem;
+}
+
+.btn-proj {
+     margin-right: 5px;
 }
 
 /* CTA */
