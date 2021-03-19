@@ -31,8 +31,9 @@ Login
                 {% endif %}
             {% endwith %}
             <form action="" method="post" class="form" role="form">
-                {{ wtf.form_field(form.email, novalidate=True) }}
-                {{ wtf.form_field(form.password, novalidate=True) }}
+                {{ form.csrf_token }}
+                {{ wtf.form_field(form.email) }}
+                {{ wtf.form_field(form.password) }}
                 <button type="submit" class="btn custom"><i class="fas fa-check"></i> Log Me In!</button>
             </form>
         </div>
