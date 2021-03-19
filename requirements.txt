@@ -34,3 +34,6 @@ Werkzeug @ file:///home/ktietz/src/ci/werkzeug_1611932622770/work
 wincertstore==0.2
 wrapt==1.12.1
 WTForms==2.3.3
+
+flask~=1.1.2
+werkzeug~=1.0.1

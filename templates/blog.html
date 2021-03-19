@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Home
+Blog
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,6 @@ Home
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-        
             {% for blog_post in all_posts %}
                 <div class="post-preview">
                     <a href="{{ url_for('get_blog_post', post_id=blog_post.id) }}">
@@ -31,8 +30,6 @@ Home
                     </p>
                 </div>
             {% endfor %}
-        
-            <!-- Pager -->
             <div class="clearfix">
                 {% if current_user.id == 1 %}
                     <a class="btn custom float-right" href="{{ url_for('make_post') }}"><i class="fas fa-pencil-alt"></i> Create New Post</a>
