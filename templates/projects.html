@@ -5,7 +5,7 @@ Projects
 {% endblock %}
 
 {% block content %}
-<div class="jumbotron jumbotron-fluid" style="background-image: url({{ url_for('static', filename='img/projects_bg.jpg') }})">
+<div class="jumbotron jumbotron-fluid" style="background-image: url({{ url_for('static', filename='img/bg/projects_bg.jpg') }})">
     <div class="jumbo-overlay"></div>
     <div class="container">
         <div class="jumbo-title text-center">
@@ -15,10 +15,38 @@ Projects
     </div>
 </div>
 <div class="container">
-    <div class="feature-title text-center">
-        <h2 class="medium-heading">Projects Page</h2>
+    <div class="card-deck">
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/proj/proj-portfolio.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h3 class="card-title">Card title</h3>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/proj/proj-resume.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h3 class="card-title">Card title</h3>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{{ url_for('static', filename='img/proj/proj-habit.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h3 class="card-title">Card title</h3>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+            </div>
+        </div>
     </div>
-
 </div>
 
 {% endblock %}

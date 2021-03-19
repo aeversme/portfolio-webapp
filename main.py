@@ -267,7 +267,7 @@ def get_resume():
 def contact_me():
     contact_form = ContactForm()
     if contact_form.validate_on_submit():
-        # TODO Add a try/except statement here
+        # TODO Add a try/except statement here, use 'except SMTPException'
         with smtplib.SMTP('smtp.mail.yahoo.com') as connection:
             connection.starttls()
             connection.login(user=os.getenv('SEND_EMAIL_FROM'), password=os.getenv('PASSWORD'))
