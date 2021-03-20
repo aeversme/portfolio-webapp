@@ -62,10 +62,6 @@ hr {
     font-size: 1.1rem;
 }
 
-.separator {
-    padding-top: 60px;
-}
-
 /* Buttons */
 
 .custom {
@@ -178,6 +174,32 @@ hr {
 .feature-icon {
     padding-bottom: 20px;
     color: #ff7e67;
+}
+
+/* About */
+
+.profile-pic {
+    width: 180px;
+    border-radius: 100%;
+    padding: 20px 0;
+}
+
+.media {
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.media-img {
+    width: 140px;
+    border-radius: 100%;
+}
+
+.body-right {
+    padding-left: 20px;
+}
+
+.body-left {
+    padding-right: 20px;
 }
 
 /* Blog */

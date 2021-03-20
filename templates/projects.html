@@ -23,11 +23,11 @@ Projects
                 <p class="card-text text-muted status">
                     Status: in development
                 </p>
-                <p class="card-text">This website! Responsive Bootstrap CSS, Flask, authentication, SQLALchemy,
+                <p class="card-text">This website! Responsive Bootstrap CSS, Flask, authentication, relational database,
                     and more. Soon to be deployed on AWS with Elastic Beanstalk.
                 </p>
             </div>
-            <div class="card-footer">
+            <div class="card-footer bg-transparent">
                 <small class="text-muted">
                     <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#portfolioModal">
                         More Info
@@ -40,17 +40,17 @@ Projects
         <div class="card">
             <img src="{{ url_for('static', filename='img/proj/proj-resume.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-            <h3 class="card-title">Cloud Resume</h3>
+            <h3 class="card-title">Cloud Résumé</h3>
                 <p class="card-text text-muted status">
                     Status: complete, deployed
                 </p>
                 <p class="card-text">Created for Forrest Brazeal's
-                    <a href="https://cloudresumechallenge.dev/" target="_blank">Cloud Resume Challenge</a>. Hosted on
+                    <a href="https://cloudresumechallenge.dev/" target="_blank">Cloud Résumé Challenge</a>. Hosted on
                     AWS using Serverless Application Model, S3, Cloudfront, Lambda, DynamoDB, and more. GitHub Actions
                     for CI/CD.
                 </p>
             </div>
-            <div class="card-footer">
+            <div class="card-footer bg-transparent">
                 <small class="text-muted">
                     <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#resumeModal">
                         More Info
@@ -72,7 +72,7 @@ Projects
                     side project with guizero.
                 </p>
             </div>
-            <div class="card-footer">
+            <div class="card-footer bg-transparent">
                 <small class="text-muted">
                     <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#habitModal">
                         More Info
@@ -85,10 +85,6 @@ Projects
     </div>
 </div>
 
-<div class="separator col-lg-8 col-md-10 mx-auto">
-    <hr>
-</div>
-
 <!-- Modals -->
 <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -97,7 +93,15 @@ Projects
                 <h5 class="modal-title" id="portfolioModalLabel">Portfolio Website</h5>
             </div>
             <div class="modal-body">
-                Details about the Portfolio Website go here.
+                1) a pithy description (“what am I looking at”),
+                2) technologies employed,
+                3) how much you did  yourself,
+                4) highlights of any part you are particularly proud of, especially if you used something novel
+                    or creative,
+                5) any problems you encountered (such as that button-color one) and what you did / steps you took
+                    to solve the problems,
+                6) things you like to do someday to further improve the project (even if you aren’t really planning
+                    to do so, just show you’ve thought about “what’s next”)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
@@ -110,10 +114,10 @@ Projects
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="resumeModalLabel">Cloud Resume</h5>
+                <h5 class="modal-title" id="resumeModalLabel">Cloud Résumé</h5>
             </div>
             <div class="modal-body">
-                Details about the Cloud Resume go here.
+                Details about the Cloud Résumé go here.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
