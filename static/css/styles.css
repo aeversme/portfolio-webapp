@@ -62,11 +62,16 @@ hr {
     font-size: 1.1rem;
 }
 
+.separator {
+    padding-top: 60px;
+}
+
 /* Buttons */
 
 .custom {
     color: #fff;
     background-color: #ff7e67;
+    border-color: #ff7e67;
     font-weight: 600;
     box-shadow: none;
     -webkit-box-shadow: none
@@ -75,11 +80,34 @@ hr {
 .custom:hover, .custom:focus {
     color: #fff;
     background-color: #e6654e;
+    border-color: #ff7e67;
     box-shadow: none;
     -webkit-box-shadow: none
 }
 
 .custom:active {
+    box-shadow: none;
+    -webkit-box-shadow: none
+}
+
+.custom-outline {
+    color: #ff7e67;
+    background-color: transparent;
+    background-image: none;
+    border-color: #ff7e67;
+    box-shadow: none;
+    -webkit-box-shadow: none
+}
+
+.custom-outline:hover, .custom-outline:focus {
+    color: #fff;
+    background-color: #e6654e;
+    border-color: #ff7e67;
+    box-shadow: none;
+    -webkit-box-shadow: none
+}
+
+.custom-outline:active {
     box-shadow: none;
     -webkit-box-shadow: none
 }
@@ -197,6 +225,10 @@ hr {
 
 /* Projects */
 
+.card-deck {
+    padding-top: 40px;
+}
+
 .status {
     font-size: 0.9rem;
 }
@@ -219,6 +251,7 @@ hr {
 
 footer {
     padding: 40px 0 10px;
+    margin-top: 0;
 }
 
 .footer-icon {

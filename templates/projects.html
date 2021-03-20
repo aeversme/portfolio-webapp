@@ -29,10 +29,10 @@ Projects
             </div>
             <div class="card-footer">
                 <small class="text-muted">
-                    <button type="button" class="btn custom btn-proj">
+                    <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#portfolioModal">
                         More Info
                     </button>
-                    <a class="btn custom btn-proj" href="https://github.com/aeversme/portfolio-webapp" target="_blank">
+                    <a class="btn custom-outline btn-proj" href="https://github.com/aeversme/portfolio-webapp" target="_blank">
                         <i class="fas fa-code-branch"></i> GitHub</a>
                 </small>
             </div>
@@ -52,8 +52,10 @@ Projects
             </div>
             <div class="card-footer">
                 <small class="text-muted">
-                    <button type="button" class="btn custom btn-proj">More Info</button>
-                    <a class="btn custom btn-proj" href="https://github.com/aeversme/resumestatic" target="_blank">
+                    <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#resumeModal">
+                        More Info
+                    </button>
+                    <a class="btn custom-outline btn-proj" href="https://github.com/aeversme/resumestatic" target="_blank">
                         <i class="fas fa-code-branch"></i> GitHub</a>
                 </small>
             </div>
@@ -66,16 +68,71 @@ Projects
                     Status: complete, executable planned
                 </p>
                 <p class="card-text">A desktop app to track habits (such as learning/coding hours). Utilizes
-                    <a href="https://pixe.la/" target="_blank">Pixe.la</a> APIs to create a pixel graph. Created as a side
-                    project with guizero.
+                    <a href="https://pixe.la/" target="_blank">Pixe.la</a> APIs to create a pixel graph. Created as a
+                    side project with guizero.
                 </p>
             </div>
             <div class="card-footer">
                 <small class="text-muted">
-                    <button type="button" class="btn custom btn-proj">More Info</button>
-                    <a class="btn custom btn-proj" href="https://github.com/aeversme/habit-tracker-gui" target="_blank">
+                    <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#habitModal">
+                        More Info
+                    </button>
+                    <a class="btn custom-outline btn-proj" href="https://github.com/aeversme/habit-tracker-gui" target="_blank">
                         <i class="fas fa-code-branch"></i> GitHub</a>
                 </small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="separator col-lg-8 col-md-10 mx-auto">
+    <hr>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="portfolioModalLabel">Portfolio Website</h5>
+            </div>
+            <div class="modal-body">
+                Details about the Portfolio Website go here.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn custom" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resumeModalLabel">Cloud Resume</h5>
+            </div>
+            <div class="modal-body">
+                Details about the Cloud Resume go here.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn custom" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="habitModal" tabindex="-1" aria-labelledby="habitModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="habitModalLabel">Habit Tracker GUI</h5>
+            </div>
+            <div class="modal-body">
+                Details about the Habit Tracker go here.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn custom" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
