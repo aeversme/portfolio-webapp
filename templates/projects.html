@@ -15,8 +15,9 @@ Projects
     </div>
 </div>
 <div class="container">
-    <div class="card-deck">
-        <div class="card">
+    <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2">
+      <div class="col mb-4">
+        <div class="card h-100">
             <img src="{{ url_for('static', filename='img/proj/proj-portfolio.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title">Portfolio Webapp</h3>
@@ -37,7 +38,9 @@ Projects
                 </small>
             </div>
         </div>
-        <div class="card">
+      </div>
+        <div class="col mb-4">
+        <div class="card h-100">
             <img src="{{ url_for('static', filename='img/proj/proj-resume.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
             <h3 class="card-title">Cloud Résumé</h3>
@@ -60,7 +63,9 @@ Projects
                 </small>
             </div>
         </div>
-        <div class="card">
+        </div>
+        <div class="col mb-4">
+        <div class="card h-100">
             <img src="{{ url_for('static', filename='img/proj/proj-habit.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title">Habit Tracker GUI</h3>
@@ -81,6 +86,7 @@ Projects
                         <i class="fas fa-code-branch"></i> GitHub</a>
                 </small>
             </div>
+        </div>
         </div>
     </div>
 </div>

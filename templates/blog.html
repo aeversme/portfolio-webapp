@@ -16,12 +16,12 @@ Blog
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="col-lg-8 col-md-10 mx-auto text-center">
             {% for blog_post in all_posts %}
                 <div class="post-preview">
                     <a href="{{ url_for('get_blog_post', post_id=blog_post.id) }}">
-                    <h2 class="medium-heading">{{ blog_post.title }}</h2>
-                    <h3 class="small-heading">{{ blog_post.subtitle }}</h3>
+                    <h2>{{ blog_post.title }}</h2>
+                    <h4>{{ blog_post.subtitle }}</h4>
                     </a>
                     <p class="post-meta">Posted by {{ blog_post.author.name }} on {{ blog_post.date }}
                     {% if current_user.id == 1 %}
