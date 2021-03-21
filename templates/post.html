@@ -25,23 +25,17 @@ Blog Post
             {% endif %}
             </span>
             <hr>
-            <div class="col-lg-8 col-md-10 mx-auto comment">
-                <ul class="comment-list">
-                    {% for comment in blog_post.comments %}
-                        <li>
-                            <div class="commenter-image">
-                                <img src="{{ comment.comment_author.email | gravatar }}"/>
-                            </div>
-                            <div class="comment-text">
-                                <p>{{ comment.text|safe }}</p>
-                                <span class="comment-meta">{{ comment.comment_author.name }}</span>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="clearfix">
+            {% for comment in blog_post.comments %}
+                <div class="media media-comment">
+                    <img src="{{ comment.comment_author.email | gravatar }}" class="commenter-image"/>
+                    <div class="media-body comment-text">
+                        {{ comment.text|safe }}
+                        <p class="comment-meta">Posted by {{ comment.comment_author.name }}</p>
+                    </div>
+                </div>
+            {% endfor %}
 
+            <div class="clearfix">
                 {{ ckeditor.load() }}
                 {{ ckeditor.config(name="comment") }}
                 <form action="" method="post" class="form" role="form">
@@ -51,7 +45,6 @@ Blog Post
                 </form>
             </div>
         </div>
-
     </div>
 </div>
 

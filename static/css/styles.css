@@ -29,7 +29,7 @@ hr {
     border-top-style: dotted;
     border-width: 8px;
     width: 15%;
-    margin: 20px auto;
+    margin: 30px auto;
 }
 
 .dark {
@@ -184,7 +184,7 @@ hr {
     padding: 20px 0;
 }
 
-.media {
+.media-about {
     margin: 20px 0;
     padding: 10px;
 }
@@ -219,9 +219,9 @@ hr {
     padding-top: 20px;
 }
 
-.comment-list {
-    padding: 0;
-    list-style: none;
+.media-comment {
+    width: 90%;
+    margin: 10px auto;
 }
 
 .commenter-image {
@@ -237,12 +237,14 @@ hr {
 }
 
 .comment-text p {
-    margin: 0;
+    margin-left: 10px;
+    font-size: 0.9rem;
 }
 
 .comment-meta {
     font-size: 11px;
     color: #868e96;
+    font-style: italic;
 }
 
 /* Projects */
