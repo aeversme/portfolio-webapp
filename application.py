@@ -14,23 +14,23 @@ from dotenv import load_dotenv
 from datetime import date
 import os
 
-app = Flask(__name__)
+application = Flask(__name__)
 current_year = date.today().year
-Bootstrap(app)
-ckeditor = CKEditor(app)
+Bootstrap(application)
+ckeditor = CKEditor(application)
 load_dotenv()
 
 # App & DB Config
-app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
+application.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(application)
 
 login_manager = LoginManager()
-login_manager.init_app(app)
+login_manager.init_app(application)
 login_manager.login_view = 'login'
 
-gravatar = Gravatar(app,
+gravatar = Gravatar(application,
                     size=100,
                     rating='g',
                     default='identicon',
@@ -91,28 +91,28 @@ class Comment(db.Model):
 db.create_all()
 
 
-@app.route('/')
+@application.route('/')
 def get_index():
     return render_template('index.html',
                            year=current_year,
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/about')
+@application.route('/about')
 def get_about_page():
     return render_template('about.html',
                            year=current_year,
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/projects')
+@application.route('/projects')
 def get_projects():
     return render_template('/projects.html',
                            year=current_year,
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/blog')
+@application.route('/blog')
 def get_all_posts():
     blog_posts = db.session.query(BlogPost).all()
     return render_template('blog.html',
@@ -121,7 +121,7 @@ def get_all_posts():
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@application.route('/register', methods=['GET', 'POST'])
 def register_new_user():
     register_form = RegisterForm()
     if request.method == 'POST' and register_form.validate():
@@ -149,7 +149,7 @@ def register_new_user():
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@application.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('get_all_posts'))
@@ -170,13 +170,13 @@ def login():
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/logout')
+@application.route('/logout')
 def logout():
     logout_user()
     return redirect(request.referrer)
 
 
-@app.route('/post/<int:post_id>', methods=['GET', 'POST'])
+@application.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def get_blog_post(post_id):
     requested_post = BlogPost.query.get(post_id)
     comment_form = CommentForm()
@@ -200,7 +200,7 @@ def get_blog_post(post_id):
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/make-post', methods=['GET', 'POST'])
+@application.route('/make-post', methods=['GET', 'POST'])
 @admin_only
 def make_post():
     post_form = CreatePostForm()
@@ -222,7 +222,7 @@ def make_post():
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
+@application.route('/edit_post/<int:post_id>', methods=['GET', 'POST'])
 @admin_only
 def edit_post(post_id):
     selected_post = BlogPost.query.get(post_id)
@@ -247,7 +247,7 @@ def edit_post(post_id):
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/delete/<int:post_id>')
+@application.route('/delete/<int:post_id>')
 @admin_only
 def delete(post_id):
     selected_post = BlogPost.query.get(post_id)
@@ -256,14 +256,14 @@ def delete(post_id):
     return redirect(url_for('get_all_posts'))
 
 
-@app.route('/resume')
+@application.route('/resume')
 def get_resume():
     return render_template('resume.html',
                            year=current_year,
                            logged_in=current_user.is_authenticated)
 
 
-@app.route('/contact', methods=['GET', 'POST'])
+@application.route('/contact', methods=['GET', 'POST'])
 def contact_me():
     contact_form = ContactForm()
     if contact_form.validate_on_submit():
@@ -289,4 +289,4 @@ def contact_me():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
