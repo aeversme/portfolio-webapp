@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, abort
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf.csrf import CSRFProtect
 from flask_ckeditor import CKEditor
 from flask_login import UserMixin, login_user, LoginManager, current_user, logout_user
 from sqlalchemy import ForeignKey
@@ -17,12 +18,13 @@ import os
 application = Flask(__name__)
 current_year = date.today().year
 Bootstrap(application)
+csrf = CSRFProtect(application)
 ckeditor = CKEditor(application)
 load_dotenv()
 
 # App & DB Config
 application.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
-application.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI', 'sqlite:///blog.db')
+application.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(application)
 
