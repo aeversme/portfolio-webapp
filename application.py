@@ -22,7 +22,7 @@ load_dotenv()
 
 # App & DB Config
 application.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY')
-application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+application.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI', 'sqlite:///blog.db')
 application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(application)
 
@@ -289,4 +289,4 @@ def contact_me():
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    application.run()
