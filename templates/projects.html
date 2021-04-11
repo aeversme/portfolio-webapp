@@ -100,15 +100,46 @@ Projects
                 <h3 class="modal-title" id="portfolioModalLabel">Portfolio Website</h3>
             </div>
             <div class="modal-body">
-                1) a pithy description (“what am I looking at”),<br>
-                2) technologies employed,<br>
-                3) how much you did yourself,<br>
-                4) highlights of any part you are particularly proud of, especially if you used something novel
-                    or creative,<br>
-                5) any problems you encountered (such as that button-color one) and what you did / steps you took
-                    to solve the problems,<br>
-                6) things you like to do someday to further improve the project (even if you aren’t really planning
-                    to do so, just show you’ve thought about “what’s next”)
+                <h5>A Flask web application with Bootstrap CSS</h5>
+                <p>
+                    <ul>
+                        <li>Python</li>
+                        <li>Flask, SQLAlchemy, smtplib, Werkzeug</li>
+                        <li>HTML, Bootstrap CSS</li>
+                        <li>Git, GitHub, Github Actions</li>
+                        <li>Amazon Web Services, AWS Elastic Beanstalk</li>
+                    </ul>
+                </p>
+                <p>This webapp was created as a capstone project for the Python Bootcamp taught by Angela Yu of The App
+                    Brewery. Some of the backend Flask code is recycled from an earlier project, while the frontend
+                    code is almost exclusively written from scratch. It is deployed on AWS Elastic Beanstalk via
+                    GitHub.</p>
+                <p>I am particularly pleased with two aspects of this application: styling the HTML with Bootstrap, a
+                    framework with which I had little experience; and figuring out the deployment process, which
+                    included using the AWS EB CLI tool locally, associating the application with a MySQL RDS instance,
+                    and setting up a GitHub CI/CD pipeline to automatically push changes to Elastic Beanstalk.</p>
+                <p>Numerous challenges presented themselves throughout the development process. Some examples:</p>
+                <p>
+                    <ul>
+                        <li>Proper form validation: I decided not to use wtf.quick_form() to create the various HTML
+                            forms, so the validate_on_submit() method was invalid. Documentation led me to an alternate
+                            method for validating form fields.</li>
+                        <li>Custom CSS: I wanted to define my own color for the Bootstrap buttons, but importing the
+                            Bootstrap CSS via a CDN meant that I had no easy way to manipulate built-in values. A good
+                            deal of searching led me to the code I needed to calculate color hex values and create my
+                            own btn-custom class.</li>
+                        <li>SMTP: my web application was unable to send emails (from the Contact page) after being
+                            deployed onto AWS. A trip into my EB environment's EC2 logs first revealed a CSRF error, so
+                            I explicitly imported CSRFProtect from Flask-WTF. Although that hurdle was cleared, POST
+                            requests continued to time out. Several searches on stackoverflow eventually revealed that
+                            AWS throttles outbound EC2 traffic on port 25. Explicitly defining a different port for
+                            SMTP traffic has restored email functionality.</li>
+                    </ul>
+                </p>
+                <p>Future improvements may include: reCAPTCHA (or reCAPTCHA-like) bot mitigation; defining Elastic
+                    Beanstalk configuration settings with code, instead of manipulating the EB environment in the AWS
+                    console; improved blog formatting and pagination; some sort of alert (email?) system when users
+                    comment on a blog post.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
