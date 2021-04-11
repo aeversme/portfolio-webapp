@@ -270,7 +270,7 @@ def contact_me():
     contact_form = ContactForm()
     if contact_form.validate_on_submit():
         # TODO Add a try/except statement here, use 'except SMTPException'
-        with smtplib.SMTP('smtp.mail.yahoo.com', port=2587) as connection:
+        with smtplib.SMTP('smtp.mail.yahoo.com', port=587) as connection:
             connection.starttls()
             connection.login(user=os.getenv('SEND_EMAIL_FROM'), password=os.getenv('PASSWORD'))
             connection.sendmail(
