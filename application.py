@@ -251,11 +251,20 @@ def edit_post(post_id):
 
 @application.route('/delete/<int:post_id>')
 @admin_only
-def delete(post_id):
+def delete_post(post_id):
     selected_post = BlogPost.query.get(post_id)
     db.session.delete(selected_post)
     db.session.commit()
     return redirect(url_for('get_all_posts'))
+
+
+@application.route('/delete_comment/<int:comment_id>')
+@admin_only
+def delete_comment(comment_id):
+    selected_comment = Comment.query.get(comment_id)
+    db.session.delete(selected_comment)
+    db.session.commit()
+    return redirect(url_for('get_blog_post', post_id=selected_comment.post_id))
 
 
 @application.route('/resume')

@@ -25,7 +25,7 @@ Blog
                     </a>
                     <p class="post-meta">Posted by {{ blog_post.author.name }} on {{ blog_post.date }}
                     {% if current_user.id == 1 %}
-                    <a href="{{ url_for('delete', post_id=blog_post.id) }}">✘</a>
+                    <a class="muted" href="{{ url_for('delete_post', post_id=blog_post.id) }}"> ✘</a>
                     {% endif %}
                     </p>
                 </div>

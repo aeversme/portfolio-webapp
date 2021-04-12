@@ -30,7 +30,11 @@ Blog Post
                     <img src="{{ comment.comment_author.email | gravatar }}" class="commenter-image"/>
                     <div class="media-body comment-text">
                         {{ comment.text|safe }}
-                        <p class="comment-meta">Posted by {{ comment.comment_author.name }}</p>
+                        <p class="comment-meta">Posted by {{ comment.comment_author.name }}
+                            {% if current_user.id == 1 %}
+                                <a class="muted" href="{{url_for('delete_comment', comment_id=comment.id)}}"> ✘</a>
+                            {% endif %}
+                        </p>
                     </div>
                 </div>
             {% endfor %}
