@@ -69,7 +69,7 @@ Projects
         <div class="card h-100">
             <img src="{{ url_for('static', filename='img/proj/proj-habit.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h3 class="card-title">Habit Tracker GUI</h3>
+                <h3 class="card-title">Habit Tracker</h3>
                 <p class="card-text text-muted status">
                     Status: complete, executable planned
                 </p>
@@ -111,7 +111,7 @@ Projects
                     </ul>
                 </p>
                 <p>This webapp was created as a capstone project for the Python Bootcamp taught by Angela Yu of The App
-                    Brewery. Some of the backend Flask code is recycled from an earlier project, while the frontend
+                    Brewery. Some of the backend Flask code was written by me for an earlier project, while the frontend
                     code is almost exclusively written from scratch. It is deployed on AWS Elastic Beanstalk via
                     GitHub.</p>
                 <p>I am particularly pleased with two aspects of this application: styling the HTML with Bootstrap, a
@@ -138,8 +138,8 @@ Projects
                 </p>
                 <p>Future improvements may include: reCAPTCHA (or reCAPTCHA-like) bot mitigation; defining Elastic
                     Beanstalk configuration settings with code, instead of manipulating the EB environment in the AWS
-                    console; improved blog formatting and pagination; some sort of alert (email?) system when users
-                    comment on a blog post.</p>
+                    console; improved blog formatting and pagination; more error-handling; some sort of alert (email?)
+                    system when users comment on a blog post.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
@@ -155,15 +155,28 @@ Projects
                 <h3 class="modal-title" id="resumeModalLabel">Cloud Résumé</h3>
             </div>
             <div class="modal-body">
-                1) a pithy description (“what am I looking at”),<br>
-                2) technologies employed,<br>
-                3) how much you did yourself,<br>
-                4) highlights of any part you are particularly proud of, especially if you used something novel
-                    or creative,<br>
-                5) any problems you encountered (such as that button-color one) and what you did / steps you took
-                    to solve the problems,<br>
-                6) things you like to do someday to further improve the project (even if you aren’t really planning
-                    to do so, just show you’ve thought about “what’s next”)
+                <h5>A serverless cloud résumé website</h5>
+                <p>
+                    <ul>
+                        <li>HTML, CSS, Javascript</li>
+                        <li>Git, GitHub, GitHub Actions</li>
+                        <li>Amazon Web Services, AWS Serverless Application Model, AWS SAM CLI</li>
+                        <li>Lambda, DynamoDB, API Gateway, S3, Route53, Certificate Manager</li>
+                    </ul>
+                </p>
+                <p>I completed this project shortly after obtaining the AWS Solutions Architect Associate
+                    certification and just before I began an online bootcamp to learn Python. As I didn't know much
+                    code at that point, I chose to use a pre-built HTML/CSS template for the frontend. Loading the
+                    website triggers an AWS Lambda function that increases the visitor count in a DynamoDB table by one
+                    and returns the new count to the website.</p>
+                <p>This project contained many firsts for me, including implementation of a CI/CD pipeline, use of the
+                    Serverless Application Model CLI tool, and creation of an AWS Lambda function. I spent numerous
+                    research hours online as I worked towards completion of the website and its backend counter. I
+                    attempted to write the Lambda code myself, but ended up referencing several other similar functions
+                    to piece together a working solution.</p>
+                <p>Since the completion of this project, I have learned quite a bit more about coding and about the way
+                    these services function and work together. It would be an interesting exercise to see if I could
+                    author the Lambda function on my own at this point.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
@@ -176,18 +189,52 @@ Projects
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="habitModalLabel">Habit Tracker GUI</h3>
+                <h3 class="modal-title" id="habitModalLabel">Habit Tracker</h3>
             </div>
             <div class="modal-body">
-                1) a pithy description (“what am I looking at”),<br>
-                2) technologies employed,<br>
-                3) how much you did yourself,<br>
-                4) highlights of any part you are particularly proud of, especially if you used something novel
-                    or creative,<br>
-                5) any problems you encountered (such as that button-color one) and what you did / steps you took
-                    to solve the problems,<br>
-                6) things you like to do someday to further improve the project (even if you aren’t really planning
-                    to do so, just show you’ve thought about “what’s next”)
+                <h5>An API-based Python GUI app</h5>
+                <p>
+                    <ul>
+                        <li>Python</li>
+                        <li>guizero, tkinter, requests</li>
+                    </ul>
+                </p>
+                <p>After working with the <a href="https://pixe.la/" target="_blank">Pixe.la</a> APIs through the
+                    console during a bootcamp project, I decided to create a graphical user interface application that
+                    would allow me to track my time spent coding and learning on a pixel graph. I reused the
+                    API-related code that I had authored during the bootcamp project and built the GUI from scratch.</p>
+                <p>This was my first coding side project, written over the course of a week as I moved on to other
+                    Python lessons. I am particularly pleased with my implementation of guizero, a wrapper for tkinter
+                    that I had not used before. I relied heavily on the guizero documentation for reference.</p>
+                <p>Some notable challenges:</p>
+                <p>
+                    <ul>
+                        <li>Image resizing: I wanted to include the Pixe.la logo as part of the app's header, but when
+                            I defined the desired width and height of the image, only a small corner of the full image
+                            was shown in the app window. Some searching led me to discover that guizero required the
+                            Pillow library to scale images. Installing the Pillow package created the desired
+                            outcome.</li>
+                        <li>Error handling: the Pixe.la API requires the 'date' header to follow a specific format, so
+                            I needed to both convert the date string entered into the app, and catch other errors
+                            before data was passed to the API. I learned how to use a try/except block to catch invalid
+                            entries, and used the datetime module and strftime to convert the date entry into an
+                            appropriate date object.</li>
+                        <li>GUI operation: I wanted the app to have a reset button to clear text boxes and reset radio
+                            button selections. Research revealed that guizero did not include wrappers for this type of
+                            functionality, but that I could use tkinter methods with guizero to solve this challenge.
+                            In the case of resetting radio buttons, this involved creating a list of the options and
+                            calling tk.select() on the desired list index.</li>
+                        <li>Including the graph: Pixe.la graphs are rendered in SVG format in a browser window. I
+                            attempted to figure out how to display a graph in the GUI window, only to discover that
+                            there doesn't seem to be a Python library that can handle SVG code effectively without
+                            relying upon a separate image processing application. I did not like the idea of having to
+                            include a separate program with this app, so I settled for a button that opens a link to
+                            the selected graph in a new browser tab.</li>
+                    </ul>
+                </p>
+                <p>For the time being, this application is complete. Future improvements may include: creating an
+                    executable using PyInstaller; adding the ability to register new users and create new graphs;
+                    displaying a graph in the app window if a library for doing so becomes available.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn custom" data-dismiss="modal">Close</button>
