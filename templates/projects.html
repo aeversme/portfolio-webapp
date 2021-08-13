@@ -18,6 +18,30 @@ Projects
     <div class="row row-cols-1 row-cols-xl-3 row-cols-lg-2">
       <div class="col mb-4">
         <div class="card h-100">
+            <img src="{{ url_for('static', filename='img/proj/proj-etl.jpg') }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h3 class="card-title">Event-Driven Python</h3>
+                <p class="card-text text-muted status">
+                    Status: complete, deployed
+                </p>
+                <p class="card-text">An automated Python ETL pipeline for processing and visualizing COVID data.
+                    Lambda, DynamoDB, SNS, EventBridge. Deployed on AWS with Terraform. GitHub Actions for CI/CD.
+                </p>
+            </div>
+            <div class="card-footer bg-transparent">
+                <small class="text-muted">
+                    <button type="button" class="btn custom btn-proj" data-toggle="modal" data-target="#pythonetlModal">
+                        More Info
+                    </button>
+                    <a class="btn custom-outline btn-proj" href="https://github.com/aeversme/cloud-challenge-python-etl"
+                       target="_blank">
+                        <i class="fas fa-code-branch"></i> GitHub</a>
+                </small>
+            </div>
+        </div>
+      </div>
+      <div class="col mb-4">
+        <div class="card h-100">
             <img src="{{ url_for('static', filename='img/proj/proj-portfolio.jpg') }}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h3 class="card-title">Portfolio Webapp</h3>
@@ -96,6 +120,56 @@ Projects
 </div>
 
 <!-- Modals -->
+<div class="modal fade" id="pythonetlModal" tabindex="-1" aria-labelledby="pythonetlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="pythonetlModalLabel">Event-Driven Python</h3>
+            </div>
+            <div class="modal-body">
+                <h5>Automated ETL processing pipeline for COVID-19 data</h5>
+                <p>
+                    <ul>
+                        <li>Python, boto3 SDK, Pycharm unit testing</li>
+                        <li>Lambda, DynamoDB, SNS, EC2</li>
+                        <li>Terraform, Terraform Cloud</li>
+                        <li>Git, GitHub, Github Actions</li>
+                        <li>Amazon Web Services, Redash</li>
+                    </ul>
+                </p>
+                <p>An AWS Lambda function, authored in Python and using boto3 to interact with other AWS resources,
+                    downloads data related to COVID-19 and performs an ETL process. The data is written to DynamoDB,
+                    where it can be queried by a self-hosted instance of Redash to create a visualization dashboard. A
+                    message is sent to a Simple Notification Service topic whenever the process finishes or encounters
+                    an error. The Lambda function is triggered daily by an Amazon EventBridge rule.</p>
+                <p>I am particularly pleased with the choice I made to provision all of my infrastructure using
+                    Terraform. This was my first time using it, so I spent several hours learning the basics and
+                    applying that knowledge to my configuration. Terraform seems like a great tool to use in my
+                    pipelines going forward, especially if/as I branch out to other cloud providers.</p>
+                <p>Numerous challenges presented themselves throughout the development process. Some examples:</p>
+                <p>
+                    <ul>
+                        <li>After working out the Python logic locally, I used multiple AWS accounts for testing and
+                            production. Each account's resources were deployed from a separate repository, which made
+                            for a lot of copy/paste. This process could be streamlined using git branches and
+                            environmental variables, something I would like to learn and practice.</li>
+                        <li>An IAM permission scoping issue threw me for a loop, sidetracking the project for several
+                            hours as I erroneously refactored the Terraform configuration.</li>
+                        <li>There were several key parts to this challenge that I had to (or wanted to) learn from
+                            scratch: boto3, AWS's Python SDK; Terraform; and unit testing in Python. Had these topics
+                            been familiar to me already, I suspect this project would have taken far less time.</li>
+                    </ul>
+                </p>
+                <p>Future improvements may include: refactoring the Terraform configuration file; writing more
+                    comprehensive unit tests; and revisiting queries and visualizations in Redash.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn custom" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="portfolioModal" tabindex="-1" aria-labelledby="portfolioModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
